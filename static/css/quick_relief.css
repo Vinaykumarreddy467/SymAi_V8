@@ -1,0 +1,289 @@
+/* Base Styles */
+:root {
+    --bg-primary: #121212;
+    --bg-secondary: #1e1e1e;
+    --bg-tertiary: #252525;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --accent-primary: #00e5ff;
+    --accent-secondary: #6a3de8;
+    --accent-tertiary: #00b894;
+    --danger: #ff5252;
+    --warning: #ffc107;
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.3);
+    --transition-normal: 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* Quick Relief Header */
+.quick-relief-header .container {
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: var(--spacing-xl) 0;
+}
+
+
+.page-title {
+    text-align: center;
+    width: 100%;
+}
+
+.page-title h1 {
+    font-size: 2rem;
+    color: var(--accent-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.page-title p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+/* Disclaimer Banner */
+.disclaimer-banner {
+    background-color: rgba(255, 193, 7, 0.1);
+    padding: var(--spacing-md) 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+.disclaimer-banner .container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.disclaimer-banner i {
+    color: var(--warning);
+    font-size: 1.5rem;
+}
+
+.disclaimer-banner p {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    flex: 1;
+}
+
+.btn-dismiss {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color var(--transition-normal);
+}
+
+.btn-dismiss:hover {
+    color: var(--text-primary);
+}
+
+/* Condition Cards */
+.condition-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--spacing-lg);
+    padding: var(--spacing-lg) 0;
+}
+
+.condition-card {
+    background-color: var(--bg-secondary);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.condition-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.condition-header {
+    background-color: var(--bg-tertiary);
+    padding: var(--spacing-md) var(--spacing-lg);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.condition-header h2 {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-xs);
+}
+
+.condition-symptoms {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+.condition-body {
+    padding: var(--spacing-lg);
+}
+
+/* Medication Section */
+.medication-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.medication-section h3 {
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.medication-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.medication-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.medication-item:last-child {
+    border-bottom: none;
+}
+
+.medication-type {
+    background-color: var(--bg-tertiary);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    padding: 2px 8px;
+    border-radius: var(--radius-sm);
+    margin-top: 2px;
+}
+
+.medication-type.otc {
+    background-color: rgba(0, 229, 255, 0.1);
+    color: var(--accent-primary);
+}
+
+.medication-type.prescription {
+    background-color: rgba(106, 61, 232, 0.1);
+    color: var(--accent-secondary);
+}
+
+.medication-type.natural {
+    background-color: rgba(0, 184, 148, 0.1);
+    color: var(--accent-tertiary);
+}
+
+.medication-info {
+    flex: 1;
+}
+
+.medication-name {
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.medication-description {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Self-Care Section */
+.self-care-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.self-care-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.self-care-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xs) 0;
+}
+
+.self-care-item i {
+    color: var(--accent-tertiary);
+    margin-top: 3px;
+}
+
+.self-care-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Warning Section */
+.warning-section {
+    background-color: rgba(255, 82, 82, 0.1);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+}
+
+.warning-section h3 {
+    color: var(--danger);
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.warning-section p {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .quick-relief-header .container {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .btn-back {
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .disclaimer-banner .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .condition-cards {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block additional_styles %}
+  <!-- your own page‐specific styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/prediction.css') }}">
+  <!-- bring in the Quick-Relief header/page-title styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/quick_relief.css') }}">
+  
+{% endblock %}
+
+{% block content %}
+  <!-- ==== PAGE HEADER (identical markup & classes to quick_relief.html) ==== -->
+  <div class="quick-relief-header">
+    <div class="container">
+      <div class="page-title">
+        <h1>Symptom Checker</h1>
+        <p>Analyze your symptoms for possible conditions</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==== SYMPTOM CHECKER SECTION ==== -->
+  <section id="symptom-checker" class="symptom-checker">
+    <div class="container">
+      <!-- Left Column (Input) -->
+      <div class="input-column">
+        <form method="POST">
+          <div class="card">
+            <h3 class="section-heading" style="color: var(--accent-primary);">
+              👤 Patient Info
+            </h3>
+            <label for="patient_name">Full Name</label>
+            <input type="text" name="patient_name" placeholder="e.g., Jane Doe">
+          </div>
+
+          <div class="card">
+            <h3 class="section-heading" style="color: var(--accent-primary);">
+              🩺 Select Your Symptoms
+            </h3>
+            {% for i in range(5) %}
+              <label for="symptom{{ i+1 }}">Symptom {{ i+1 }}</label>
+              <select name="symptom{{ i+1 }}">
+                {% for choice in symptom_choices %}
+                  <option value="{{ choice }}" 
+                          {% if choice == "None" %}selected{% endif %}>
+                    {{ choice }}
+                  </option>
+                {% endfor %}
+              </select>
+            {% endfor %}
+            <button type="submit" class="primary-button">
+              🚀 Analyze
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Right Column (Output) -->
+      <div class="output-column">
+        {% if error %}
+          <div class="card">
+            <p>{{ error }}</p>
+          </div>
+        {% elif show_charts %}
+          <div class="card">
+            <h3 class="section-heading">📋 Predictions</h3>
+            {{ diagnosis | safe }}
+          </div>
+          <div class="card">
+            <h3 class="section-heading">💡 Health Recommendations</h3>
+            {{ tips | safe }}
+          </div>
+          <div class="card">
+            <h3 class="section-heading">📊 Prediction Charts</h3>
+            <div class="chart-tabs">
+              <button class="tab-button" onclick="openChart(event, 'BarChart')">
+                Bar Chart
+              </button>
+              <button class="tab-button" onclick="openChart(event, 'PieChart')">
+                Pie Chart
+              </button>
+            </div>
+            <div id="BarChart" class="chart-content">
+              <img src="{{ url_for('static', filename='images/bar_chart.png') }}" 
+                   alt="Bar Chart" style="width:100%;max-width:600px;">
+            </div>
+            <div id="PieChart" class="chart-content" style="display:none;">
+              <img src="{{ url_for('static', filename='images/pie_chart.png') }}" 
+                   alt="Pie Chart" style="width:100%;max-width:600px;">
+            </div>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </section>
+{% endblock %}
+
+{% block additional_scripts %}
+<script>
+  function openChart(evt, chartName) {
+    var tabs = document.getElementsByClassName("chart-content");
+    for (var i=0; i<tabs.length; i++) tabs[i].style.display = "none";
+    var btns = document.getElementsByClassName("tab-button");
+    for (var i=0; i<btns.length; i++) btns[i].classList.remove("active");
+    document.getElementById(chartName).style.display = "block";
+    evt.currentTarget.classList.add("active");
+  }
+  if (document.querySelector(".tab-button")) {
+    document.querySelector(".tab-button").click();
+  }
+</script>
+{% endblock %}
