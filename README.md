@@ -148,4 +148,4 @@ The Disease Prediction System is a robust, accurate, and user-friendly tool that
 
 ## Contributors
 Thanks to these amazing people:
-- [@username](https://github.com/mahaboob9143) – Code
+- [@mahaboob](https://github.com/mahaboob9143) – Code
