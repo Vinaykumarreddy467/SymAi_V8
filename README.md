@@ -145,3 +145,7 @@ The Disease Prediction System is a robust, accurate, and user-friendly tool that
 - **Team Members**: Berugu Mahaboob Basha, Budideti Sireesha, Madipatla Deepa, Manchuri Vaseem, Molakathala Vinay Kumar Reddy.
 - **Kaggle Community**: For providing the dataset.
 - **Open-Source Community**: For software and libraries used.# SymAi_V8
+
+## Contributors
+Thanks to these amazing people:
+- [@username](https://github.com/mahaboob9143) – Code
